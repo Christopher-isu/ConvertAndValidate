@@ -15,13 +15,17 @@ Module ConvertAndValidate
         Dim aValidNumber As Integer
 
         Do
-            Console.WriteLine("Enter a number:")
+            Console.WriteLine("Enter a number (or 'q' to quit):") 'prompt the user to enter a number
             Dim userResponse As String = Console.ReadLine()
 
-            If ConversionValid(userResponse, aValidNumber) = True Then
+            If userResponse.ToLower() = "q" Then 'if the user enters 'q', exit the loop
+                Exit Do
+            End If
+
+            If ConversionValid(userResponse, aValidNumber) = True Then 'if the conversion is successful, print the result
                 Console.WriteLine($"{userResponse} converted successfully to {aValidNumber}!")
             Else
-                Console.WriteLine($"Oops, {userResponse} does not seem to be a number")
+                Console.WriteLine($"Oops, {userResponse} does not seem to be a number") '   
             End If
 
         Loop
